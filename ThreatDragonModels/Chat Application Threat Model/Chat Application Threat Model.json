@@ -640,6 +640,72 @@
               "protocol": "",
               "threats": [
                 {
+                  "id": "e2595d3f-a3d4-49ee-84b9-e24e2f247bf2",
+                  "title": "Sensitive Chat Data Exposure",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "Unauthorized users could gain access to private messages.",
+                  "mitigation": "Encrypt all data at rest and in transit. Avoid storing unnecessary user data in plain text",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": "8"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              ""
+            ],
+            "id": "20949a67-59de-4e72-b55b-8a796ad0cefb",
+            "source": {
+              "cell": "5cf98c88-b073-4ba0-83fe-0d821aa28ceb",
+              "port": "3a5dc942-3725-4828-ac03-bbac1e825629"
+            },
+            "target": {
+              "cell": "8eabaed8-c15b-4b70-ad81-09e68a981c48",
+              "port": "b272ff63-4b55-4c9e-a71d-2b6ae8e6999d"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
                   "id": "235a86ec-725f-460e-bd01-d0aff29a8095",
                   "title": "Message Integrity Tampering",
                   "status": "Open",
@@ -676,73 +742,17 @@
                 "x": 306,
                 "y": -450
               }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "e2595d3f-a3d4-49ee-84b9-e24e2f247bf2",
-                  "title": "Sensitive Chat Data Exposure",
-                  "status": "Open",
-                  "severity": "Critical",
-                  "type": "Information disclosure",
-                  "description": "Unauthorized users could gain access to private messages.",
-                  "mitigation": "Encrypt all data at rest and in transit. Avoid storing unnecessary user data in plain text",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 9,
-                  "score": "8"
-                }
-              ],
-              "threatFrequency": {
-                "tampering": 0,
-                "informationDisclosure": 1,
-                "denialOfService": 0
-              }
-            },
-            "labels": [
-              ""
             ],
-            "id": "20949a67-59de-4e72-b55b-8a796ad0cefb",
-            "source": {
-              "cell": "5cf98c88-b073-4ba0-83fe-0d821aa28ceb",
-              "port": "3a5dc942-3725-4828-ac03-bbac1e825629"
-            },
-            "target": {
-              "cell": "8eabaed8-c15b-4b70-ad81-09e68a981c48",
-              "port": "b272ff63-4b55-4c9e-a71d-2b6ae8e6999d"
-            },
-            "vertices": []
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
           }
         ],
         "description": "This diagram represents the flow of user messages through the chat application, including interactions with the database and the sentiment analysis API"
