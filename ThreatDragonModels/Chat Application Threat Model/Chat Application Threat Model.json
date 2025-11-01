@@ -20,7 +20,7 @@
           {
             "position": {
               "x": 250,
-              "y": -540
+              "y": -550
             },
             "size": {
               "width": 112.5,
@@ -31,13 +31,14 @@
                 "text": "User"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -121,7 +122,6 @@
               ]
             },
             "id": "252c45a5-b4c1-4140-aa33-7fbcab380b4c",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "User",
@@ -129,9 +129,27 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "3c6eef4b-0355-44ce-b1d5-cc4006b75d88",
+                  "title": "User Identitu Spoofing",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker could impersonate a legitimate user or use stolen credentials to access the chat system, leading to unauthorized access to user data or conversations.",
+                  "mitigation": "Use HTTPS",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": "7"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 0
+              }
             }
           },
           {
@@ -148,13 +166,14 @@
                 "text": "Chat \nApplication"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -238,7 +257,6 @@
               ]
             },
             "id": "8534c699-47fc-43a8-9809-6b4b54dddccb",
-            "zIndex": 2,
             "data": {
               "type": "tm.Process",
               "name": "Chat \nApplication",
@@ -246,12 +264,60 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "b924e025-d6d7-4478-8a79-a30d3d5a7a54",
+                  "title": "User Denies Sending Messages",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Users may deny sending specific messages, making it difficult to trace or prove message ownership or origin.",
+                  "mitigation": "Implement logging message and tracking with timestamps. Include user IDs in transaction records",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": "5"
+                },
+                {
+                  "id": "13b364d0-cf33-4c34-9679-433636082223",
+                  "title": "Chat Application Flood Attack",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Attackers could flood the chat server or API with excessive requests, making the service unavailable to authorized users.",
+                  "mitigation": "Applying rate limit. Monitoring system performance and trigger alerts",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": "6"
+                },
+                {
+                  "id": "158f460e-df8a-4aa1-af63-09f6ef27b457",
+                  "title": "Unauthorized Admin Access",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Elevation of privilege",
+                  "description": "A normal user could exploit vulnerabilities to gain admin privileges, enabling them to view or modify restricted data or system settings",
+                  "mitigation": "Implement least privilege access. Validate server-side permissions before performing admin actions",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": "9"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -278,6 +344,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -361,7 +428,6 @@
               ]
             },
             "id": "5cf98c88-b073-4ba0-83fe-0d821aa28ceb",
-            "zIndex": 3,
             "data": {
               "type": "tm.Store",
               "name": "Database",
@@ -399,6 +465,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -482,7 +549,6 @@
               ]
             },
             "id": "8eabaed8-c15b-4b70-ad81-09e68a981c48",
-            "zIndex": 4,
             "data": {
               "type": "tm.Actor",
               "name": "Sentiment \nAnalysis API",
@@ -499,7 +565,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -520,12 +587,31 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "235a86ec-725f-460e-bd01-d0aff29a8095",
+                  "title": "Message Integrity Tampering",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "An attacker could intercept and alter chat messages or sentiment data while it is transmitted between the user, chat application, and sentiment analysis API.",
+                  "mitigation": "Use TLS/HTTPS for all communication. Validate all inputs before storing or analyzing data",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": "7"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               ""
@@ -545,6 +631,72 @@
                 "y": -450
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "e2595d3f-a3d4-49ee-84b9-e24e2f247bf2",
+                  "title": "Sensitive Chat Data Exposure",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "Unauthorized users could gain access to private messages.",
+                  "mitigation": "Encrypt all data at rest and in transit. Avoid storing unnecessary user data in plain text",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": "8"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              ""
+            ],
+            "id": "20949a67-59de-4e72-b55b-8a796ad0cefb",
+            "source": {
+              "cell": "5cf98c88-b073-4ba0-83fe-0d821aa28ceb",
+              "port": "3a5dc942-3725-4828-ac03-bbac1e825629"
+            },
+            "target": {
+              "cell": "8eabaed8-c15b-4b70-ad81-09e68a981c48",
+              "port": "b272ff63-4b55-4c9e-a71d-2b6ae8e6999d"
+            },
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -591,52 +743,6 @@
               "port": "d8fd6885-a03a-4b2e-9c1e-472f19bdf561"
             },
             "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              ""
-            ],
-            "id": "20949a67-59de-4e72-b55b-8a796ad0cefb",
-            "source": {
-              "cell": "5cf98c88-b073-4ba0-83fe-0d821aa28ceb",
-              "port": "3a5dc942-3725-4828-ac03-bbac1e825629"
-            },
-            "target": {
-              "cell": "8eabaed8-c15b-4b70-ad81-09e68a981c48",
-              "port": "b272ff63-4b55-4c9e-a71d-2b6ae8e6999d"
-            },
-            "vertices": []
           }
         ],
         "description": "This diagram represents the flow of user messages through the chat application, including interactions with the database and the sentiment analysis API"
@@ -644,6 +750,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 0
+    "threatTop": 11
   }
 }
