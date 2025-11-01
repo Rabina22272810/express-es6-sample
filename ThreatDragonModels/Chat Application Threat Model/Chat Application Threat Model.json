@@ -1,0 +1,27 @@
+{
+  "version": "2.5.0",
+  "summary": {
+    "title": "Chat Application Threat Model",
+    "owner": "Rabina22272810",
+    "description": "This threat model identifies potential security risk in chat application that performs sentiment analysis on user messages. It focuses on data flow between the user, chat application, database, and sentiment analysis API, using STRIDE categories to determine threats and mitigations",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Chat Application Data Flow",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.5.0",
+        "cells": [],
+        "description": "This diagram represents the flow of user messages through the chat application, including interactions with the database and the sentiment analysis API"
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "",
+    "threatTop": 0
+  }
+}
